@@ -1,5 +1,6 @@
 package com.example.food_safari;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -127,8 +128,8 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                Intent b1 = new Intent(Account.this, ForgotPass.class);
-//                startActivity(b1);
+                Intent b1 = new Intent(Account.this, ForgotPassword.class);
+                startActivity(b1);
             }
         });
 
