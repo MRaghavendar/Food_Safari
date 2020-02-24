@@ -1,12 +1,19 @@
 package com.example.food_safari;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Cart extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -27,6 +34,19 @@ public class Cart extends AppCompatActivity {
 
         NextProcessBtn=(Button) findViewById(R.id.next_process_btn);
         txtTotalAmount=(TextView) findViewById(R.id.total_price);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("Cart List");
+
+
+        FirebaseRecyclerOptions<CartModel> options=new FirebaseRecyclerOptions.Builder<CartModel>().setQuery(cartListRef.child("UserView")
+                .child("FoodItems"), CartModel.class).build();
+
 
     }
 }
