@@ -42,12 +42,7 @@ public class HomeScreen extends AppCompatActivity {
         });
 
 
-        cartBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeScreen.this,Cart.class));
-            }
-        });
+
 
         restaurantsBTN.setOnClickListener(new View.OnClickListener() {
             @Override

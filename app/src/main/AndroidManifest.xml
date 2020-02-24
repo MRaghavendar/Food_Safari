@@ -18,7 +18,6 @@
         <activity android:name=".Payment" />
         <activity android:name=".Home" />
         <activity android:name=".Menu" />
-        <activity android:name=".Cart" />
         <activity android:name=".Restaurant" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
