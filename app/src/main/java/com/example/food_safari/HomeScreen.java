@@ -24,6 +24,7 @@ public class HomeScreen extends AppCompatActivity {
         cartBTN = findViewById(R.id.cartBTN);
         ordersBTN = findViewById(R.id.ordersBTN);
 
+
         accountBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
