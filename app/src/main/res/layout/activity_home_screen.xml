@@ -41,4 +41,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cart" />
+
+    <Button
+        android:id="@+id/aboutBTN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About Us" />
 </LinearLayout>

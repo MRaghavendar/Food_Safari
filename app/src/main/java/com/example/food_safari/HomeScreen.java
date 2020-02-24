@@ -12,7 +12,8 @@ public class HomeScreen extends AppCompatActivity {
     Button accountBTN;
     Button restaurantsBTN;
     Button cartBTN;
-    Button ordersBTN;
+    Button ordersBTN, aboutBTN;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,8 @@ public class HomeScreen extends AppCompatActivity {
         restaurantsBTN = findViewById(R.id.restaurantsBTN);
         cartBTN = findViewById(R.id.cartBTN);
         ordersBTN = findViewById(R.id.ordersBTN);
+        aboutBTN=findViewById(R.id.aboutBTN);
+
 
         accountBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +33,14 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(new Intent(HomeScreen.this,Account.class));
             }
         });
+
+        aboutBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen.this,AboutUs.class));
+            }
+        });
+
 
         cartBTN.setOnClickListener(new View.OnClickListener() {
             @Override
