@@ -8,10 +8,33 @@
     android:padding="10dp"
     tools:context=".Cart">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true">
+
+
     <TextView
-        android:id="@+id/cartListTV"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cart is empty"
-        android:textSize="24sp" />
+        android:text="Total Price -"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+
+        />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"
+            android:text="Next"
+            />
+
+
+
+    </RelativeLayout>
 </RelativeLayout>
