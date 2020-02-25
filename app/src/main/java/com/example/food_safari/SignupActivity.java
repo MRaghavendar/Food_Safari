@@ -75,7 +75,7 @@ public class SignupActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(SignupActivity.this, "Not successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 //getting the values from the edittext to store the values
                                 FirebaseAuth auth = FirebaseAuth.getInstance();
