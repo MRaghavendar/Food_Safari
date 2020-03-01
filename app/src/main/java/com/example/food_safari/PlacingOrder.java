@@ -2,12 +2,16 @@ package com.example.food_safari;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class PlacingOrder extends AppCompatActivity {
 
@@ -41,7 +45,23 @@ public class PlacingOrder extends AppCompatActivity {
                     Toast.makeText(PlacingOrder.this, "Please Enter the Address", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(placePhoneET.getText().toString())) {
                     Toast.makeText(PlacingOrder.this, "Please Enter the Phonenumber", Toast.LENGTH_SHORT).show();
+                }else{
+                    confirmOrder();
                 }
+            }
+
+            private void confirmOrder() {
+//                String saveCurrentDate;
+//                String saveCurrentTime;
+//                Calendar calendar = Calendar.getInstance();
+//                SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+//                saveCurrentDate = currentDate.format(calendar);
+//
+//                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+//                saveCurrentTime = currentTime.format(calendar);
+//                Log.d("saveCurrentDate ",saveCurrentDate);
+//                Log.d("saveCurrentTime ",saveCurrentTime);
+
             }
         });
     }
