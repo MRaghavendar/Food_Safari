@@ -38,7 +38,6 @@ public class HomeScreen extends AppCompatActivity {
         aboutBTN = findViewById(R.id.aboutBTN);
         deleteAccBTN = findViewById(R.id.deleteAccBTN);
 
-
         accountBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
