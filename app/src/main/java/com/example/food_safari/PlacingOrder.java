@@ -29,7 +29,10 @@ public class PlacingOrder extends AppCompatActivity {
         confirmBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                check();
+            }
+
+            private void check() {
             }
         });
     }
