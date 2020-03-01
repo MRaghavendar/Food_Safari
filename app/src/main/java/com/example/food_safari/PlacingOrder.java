@@ -1,9 +1,11 @@
 package com.example.food_safari;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +35,13 @@ public class PlacingOrder extends AppCompatActivity {
             }
 
             private void check() {
+                if (TextUtils.isEmpty(placeNameET.getText().toString())) {
+                    Toast.makeText(PlacingOrder.this, "Please Enter the Name", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(placeAddress1ET.getText().toString())) {
+                    Toast.makeText(PlacingOrder.this, "Please Enter the Address", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(placePhoneET.getText().toString())) {
+                    Toast.makeText(PlacingOrder.this, "Please Enter the Phonenumber", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
