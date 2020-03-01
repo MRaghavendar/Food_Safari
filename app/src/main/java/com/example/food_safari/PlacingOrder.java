@@ -1,6 +1,7 @@
 package com.example.food_safari;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -25,5 +26,11 @@ public class PlacingOrder extends AppCompatActivity {
         placePhoneET = findViewById(R.id.placePhoneET);
 
         confirmBTN = findViewById(R.id.confirmBTN);
+        confirmBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
     }
 }
