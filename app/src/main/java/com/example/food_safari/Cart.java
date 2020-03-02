@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -41,8 +41,10 @@ public class Cart extends AppCompatActivity {
         final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("Cart List");
 
 
-//       FirebaseRecyclerOptions<CartModel> options=new FirebaseRecyclerOptions.Builder<CartModel>().setQuery(cartListRef.child("UserView")
-//               .child("FoodItems"), CartModel.class).build();
+  FirebaseRecyclerOptions<CartModel> options=new FirebaseRecyclerOptions.Builder<CartModel>().setQuery(cartListRef.child("UserView")
+         .child("FoodItems"), CartModel.class).build();
+
+
 
 
     }
