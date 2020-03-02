@@ -45,6 +45,14 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+        cartBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, Cart.class));
+
+            }
+        });
+
         aboutBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -16,6 +16,7 @@
         <activity android:name=".AboutUs" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".Account" />
+        <activity android:name=".Cart" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".Payment" />
         <activity android:name=".Home" />
