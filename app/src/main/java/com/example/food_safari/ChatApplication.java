@@ -10,8 +10,8 @@ public class ChatApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Settings settings = new Settings("YOUR_APP_ID");
-        settings.setMapsApiKey("YOUR_MAPS_API_KEY");
+        Settings settings = new Settings("5e5d34a067f178000fa6be2a");
+        settings.setMapsApiKey("AIzaSyCGiDEbPYkxRRWNUMHRCNvZUXGsE60ijXM");
 
         Smooch.init(this, settings, new SmoochCallback() {
             @Override
