@@ -1,6 +1,10 @@
 package com.example.food_safari;
 
 import android.app.Application;
+import android.app.Application;
+import io.smooch.core.Settings;
+import io.smooch.core.Smooch;
+import io.smooch.core.SmoochCallback;
 
 public class ChatApplication extends Application {
     @Override

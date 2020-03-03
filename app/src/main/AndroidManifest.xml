@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConfirmFinalOrderActivity"></activity>
+        <activity android:name=".OnlineSupport"></activity>
+        <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".PlacingOrder" />
         <activity android:name=".AboutUs" />
         <activity android:name=".HomeScreen" />
