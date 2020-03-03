@@ -53,4 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delete Account" />
+
+    <Button
+        android:id="@+id/onlineChat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chat with Customer service" />
 </LinearLayout>

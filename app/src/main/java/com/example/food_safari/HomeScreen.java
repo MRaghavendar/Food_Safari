@@ -24,6 +24,7 @@ public class HomeScreen extends AppCompatActivity {
     Button cartBTN;
     Button ordersBTN, aboutBTN;
     Button deleteAccBTN;
+    Button onlineChat;
 
 
     @Override
@@ -37,6 +38,7 @@ public class HomeScreen extends AppCompatActivity {
         ordersBTN = findViewById(R.id.ordersBTN);
         aboutBTN = findViewById(R.id.aboutBTN);
         deleteAccBTN = findViewById(R.id.deleteAccBTN);
+        onlineChat = findViewById(R.id.onlineChat);
 
         accountBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,5 +110,11 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+        onlineChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, OnlineSupport.class));
+            }
+        });
     }
 }
