@@ -126,5 +126,13 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(new Intent(HomeScreen.this, OnlineSupport.class));
             }
         });
+
+        Button d= findViewById(R.id.d);
+        d.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeScreen.this,AdminNewRestaurant.class));
+            }
+        });
     }
 }
