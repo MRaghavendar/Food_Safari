@@ -15,7 +15,6 @@
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".SimpleDisplayActivity" />
         <activity android:name=".AdminNewRestaurant" />
-        <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".OnlineSupport" />
         <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".PlacingOrder" />
