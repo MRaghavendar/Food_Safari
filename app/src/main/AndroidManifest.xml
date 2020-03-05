@@ -5,14 +5,16 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".ChatApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name="com.example.food_safari.ChatApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnlineSupport"></activity>
+        <activity android:name=".AdminNewRestaurant"></activity>
+        <activity android:name=".ProductDetailsActivity" />
+        <activity android:name=".OnlineSupport" />
         <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".PlacingOrder" />
         <activity android:name=".AboutUs" />

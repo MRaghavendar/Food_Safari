@@ -6,117 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
-
-    <GridLayout
-        android:id="@+id/favorites_grid"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/restRecycler"
         android:layout_width="match_parent"
-        android:layout_height="503dp"
-        android:layout_marginTop="40dp"
-        android:background="#00ff00"
-        android:columnCount="8"
-        android:rowCount="8"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <Button
-            android:id="@+id/medbtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:background="@android:color/holo_blue_light"
-            android:padding="10dp"
-            android:text="MEDITERRANEAN"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/IndBtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:background="@android:color/holo_orange_light"
-            android:padding="10dp"
-            android:text="INDIAN"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/chinesebtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:background="@android:color/holo_orange_dark"
-            android:text="CHINESE"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/mongolbtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:background="#DF6038"
-            android:text="MONGOLIAN"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/mexicanbtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:background="#FFA000"
-            android:text="MEXICAN"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/japnbtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="2"
-            android:layout_column="1"
-            android:text="JAPANESE"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/splDishbtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="3"
-            android:layout_column="0"
-            android:text="SPECIAL DISHES"
-            android:textSize="14dip" />
-
-        <Button
-            android:id="@+id/splOfferBtn"
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="3"
-            android:layout_column="1"
-            android:text="SPECIAL OFFERS"
-            android:textSize="14dip" />
-
-        <Button
-            android:layout_width="217dp"
-            android:layout_height="100dp"
-            android:layout_row="4"
-            android:layout_column="0"
-            android:text="Tracking"
-            android:textSize="14dip" />
-    </GridLayout>
-
-    <Button
-        android:id="@+id/backBTN"
-        android:layout_width="96dp"
-        android:layout_height="40dp"
-        android:background="@drawable/back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
