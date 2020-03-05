@@ -26,11 +26,11 @@ import java.util.HashMap;
 
 public class Account extends AppCompatActivity {
     EditText nameEt;
-    TextView pwdTV;
+    TextView pwdTV,saveChangebtn;
     EditText emailet;
     EditText phoneET;
     EditText addresset;
-    Button Chgpasswordbtn, saveChangebtn;
+    Button Chgpasswordbtn;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
 
