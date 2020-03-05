@@ -9,10 +9,19 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/appicon" />
+
     <Button
         android:id="@+id/SignUpBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:background="@android:color/white"
         android:text="Sign Up" />
 
@@ -20,6 +29,7 @@
         android:id="@+id/homeLoginBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:background="@android:color/white"
         android:text="Login" />
 

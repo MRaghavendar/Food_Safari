@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class Account extends AppCompatActivity {
     EditText nameEt;
-    TextView pwdTV,saveChangebtn;
+    TextView pwdTV,saveChangebtn,close_settings_btn;
     EditText emailet;
     EditText phoneET;
     EditText addresset;
@@ -49,6 +49,13 @@ public class Account extends AppCompatActivity {
         phoneET = findViewById(R.id.accPhoneET);
         addresset = findViewById(R.id.accAddressTV);
         String user_id = firebaseAuth.getCurrentUser().getUid();
+        close_settings_btn = findViewById(R.id.close_settings_btn);
+        close_settings_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Account.this,HomeScreen.class));
+            }
+        });
         databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
