@@ -83,7 +83,7 @@ public class SimpleDisplayActivity extends AppCompatActivity {
 
         String user_id = mFirebaseAuth.getCurrentUser().getUid();
         //connecting the database reference
-      databaseReference.child("orders").child(user_id)
+      databaseReference.child("cartlist").child(user_id).child("orders").child(tempUserName)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
