@@ -1,6 +1,7 @@
 package com.example.food_safari;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 //21v home activity
 public class ProductDetailsActivity extends AppCompatActivity {
 
-    private FloatingActionButton addToCartBtn;
+    private Button addToCartBtn;
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productPrice,productDescription,productName;
@@ -24,7 +25,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
         // productId=getIntent().getStringExtra(pid);
 
-        addToCartBtn=(FloatingActionButton) findViewById(R.id.add_product_to_cart_btn);
+        addToCartBtn=(Button) findViewById(R.id.pd_add_to_cart_button);
         numberButton=(ElegantNumberButton) findViewById(R.id.number_btn);
         productImage=(ImageView) findViewById(R.id.product_image_details);
         productName=(TextView) findViewById(R.id.product_name_details);
