@@ -66,15 +66,15 @@ public class Cart extends AppCompatActivity {
         final DatabaseReference cartListRef= FirebaseDatabase.getInstance().getReference().child("Cart List");
 
 
-  FirebaseRecyclerOptions<CartModel> options=new FirebaseRecyclerOptions.Builder<CartModel>().setQuery(cartListRef.child("UserView")
+  FirebaseRecyclerOptions<CartModel> options=new FirebaseRecyclerOptions.Builder<CartModel>().setQuery(cartListRef.child("User View")
          .child("FoodItems"), CartModel.class).build();
 
   FirebaseRecyclerAdapter<CartModel,CartViewHolder> adapter=
           new FirebaseRecyclerAdapter<CartModel, CartViewHolder>(options) {
               @Override
-              protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull CartModel model) {
+              protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final CartModel model) {
                   holder.txtProductQuantity.setText("Quantity= "+model.getQuantity());
-                  holder.txtProductName.setText("Item= "+model.getPname());
+                  holder.txtProductName.setText("Item= "+model.getId());
                   holder.txtProductPrice.setText("Price= "+model.getPrice());
 
                   int oneTyprProductTPrice=((Integer.valueOf(model.getPrice())))*((Integer.valueOf(model.getQuantity())));
@@ -95,23 +95,23 @@ public class Cart extends AppCompatActivity {
                               public void onClick(DialogInterface dialogInterface, int i) {
                                   if(i==0)
                                   {
-//                                     Intent intent=new Intent(Cart.this,ProductDetailsActivity.class);
-//                                      intent.putExtra("pid",model.getPid());
-//                                      startActivity(intent);
+                                     Intent intent=new Intent(Cart.this,SimpleDisplayActivity.class);
+                                      intent.putExtra("pid",model.getId());
+                                      startActivity(intent);
                                   }
                                   if(i==1)
                                   {
                                      cartListRef.child("User View")
                                              .child("Products")
-//                                             .child(model.getPid())  //25V
+                                             .child(model.getId())  //25V
                                              .removeValue()
                                              .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                  @Override
                                                  public void onComplete(@NonNull Task<Void> task) {
                                                      if(task.isSuccessful()){
                                                          Toast.makeText(Cart.this,"Item removed",Toast.LENGTH_SHORT).show();
-                                                        // Intent intent=new Intent(Cart.this,Home.class);
-//                                      startActivity(intent);
+                                                         Intent intent=new Intent(Cart.this,Home.class);
+                                      startActivity(intent);
                                                      }
 
                                                  }

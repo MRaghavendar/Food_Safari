@@ -1,33 +1,32 @@
 package com.example.food_safari;
 
 public class CartModel {
-    private String pid,pname,price,quantity,discount;
+    private String age,id, price, quantity;
 
     public CartModel() {
     }
 
-    public CartModel(String pid, String pname, String price, String quantity, String discount) {
-        this.pid = pid;
-        this.pname = pname;
+    public CartModel(String age, String id, String price, String quantity) {
+        this.age = age;
+        this.id = id;
         this.price = price;
         this.quantity = quantity;
-        this.discount = discount;
     }
 
-    public String getPid() {
-        return pid;
+    public String getAge() {
+        return age;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
+    public void setAge(String age) {
+        this.age = age;
     }
 
-    public String getPname() {
-        return pname;
+    public String getId() {
+        return id;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPrice() {
@@ -44,13 +43,5 @@ public class CartModel {
 
     public void setQuantity(String quantity) {
         this.quantity = quantity;
-    }
-
-    public String getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount = discount;
     }
 }
