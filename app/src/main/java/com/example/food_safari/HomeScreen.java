@@ -58,7 +58,7 @@ public class HomeScreen extends AppCompatActivity {
         ordersBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeScreen.this, ProductDetailsActivity.class));
+                startActivity(new Intent(HomeScreen.this, SimpleDisplayActivity.class));
 
             }
         });

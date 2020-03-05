@@ -231,13 +231,13 @@ public class AdminNewRestaurant extends AppCompatActivity
     private void SaveProductInfoToDatabase()
     {
        uploadItem=new UploadItem(Pname, Description, Price, CategoryName, downloadImageUrl, categoryTwos);
-        HashMap<String, Object> productMap = new HashMap<>();
-
-        productMap.put("description", Description);
-        productMap.put("image", downloadImageUrl);
-        productMap.put("category", CategoryName);
-        productMap.put("price", Price);
-        productMap.put("pname", Pname);
+//        HashMap<String, Object> productMap = new HashMap<>();
+//
+//        productMap.put("description", Description);
+//        productMap.put("image", downloadImageUrl);
+//        productMap.put("category", CategoryName);
+//        productMap.put("price", Price);
+//        productMap.put("pname", Pname);
 
         ProductsRef.child(Pname).setValue(uploadItem);
         loadingBar.dismiss();
