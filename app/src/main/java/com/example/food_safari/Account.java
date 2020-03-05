@@ -53,7 +53,10 @@ public class Account extends AppCompatActivity {
         close_settings_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Account.this,HomeScreen.class));
+                Intent intent = new Intent(new Intent(Account.this,HomeScreen.class));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
         databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
