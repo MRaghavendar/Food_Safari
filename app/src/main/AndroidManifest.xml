@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SimpleDisplayActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SimpleDisplayActivity" />
         <activity android:name=".AdminNewRestaurant" />
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".OnlineSupport" />
