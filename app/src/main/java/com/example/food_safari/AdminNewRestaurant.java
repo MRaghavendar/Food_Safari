@@ -1,15 +1,11 @@
 package com.example.food_safari;
 
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -60,9 +56,9 @@ public class AdminNewRestaurant extends AppCompatActivity
 
         AddNewProductButton = (Button) findViewById(R.id.add_new_product);
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
-        InputProductName = (EditText) findViewById(R.id.product_name);
-        InputProductDescription = (EditText) findViewById(R.id.product_description);
-        InputProductPrice = (EditText) findViewById(R.id.product_price);
+        InputProductName = (EditText) findViewById(R.id.Restaurant_Name);
+        InputProductDescription = (EditText) findViewById(R.id.Restaurant_Timings);
+        InputProductPrice = (EditText) findViewById(R.id.Restaurant_desc);
         loadingBar = new ProgressDialog(this);
 
 
