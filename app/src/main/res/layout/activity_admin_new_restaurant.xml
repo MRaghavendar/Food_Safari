@@ -22,7 +22,7 @@
 
 
     <EditText
-        android:id="@+id/product_name"
+        android:id="@+id/Restaurant_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/select_product_image"
@@ -36,10 +36,10 @@
 
 
     <EditText
-        android:id="@+id/product_description"
+        android:id="@+id/Restaurant_Timings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_name"
+        android:layout_below="@+id/Restaurant_Name"
         android:inputType="textMultiLine"
         android:layout_marginTop="6dp"
         android:padding="20dp"
@@ -50,10 +50,10 @@
 
 
     <EditText
-        android:id="@+id/product_price"
+        android:id="@+id/Restaurant_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_description"
+        android:layout_below="@+id/Restaurant_Timings"
         android:inputType="textMultiLine"
         android:layout_marginTop="6dp"
         android:padding="20dp"
@@ -67,7 +67,7 @@
         android:id="@+id/add_new_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_price"
+        android:layout_below="@+id/Restaurant_desc"
         android:text="Add Product"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
