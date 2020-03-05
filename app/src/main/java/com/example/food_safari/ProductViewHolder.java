@@ -6,8 +6,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.food_safari.ItemClickListner;
-
 public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txtProductName, txtProductDescription, txtProductPrice;
     public ImageView imageView;
@@ -19,17 +17,20 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
 
 
         imageView = itemView.findViewById(R.id.product_image);
-        txtProductName = itemView.findViewById(R.id.product_name);
-        txtProductDescription = itemView.findViewById(R.id.product_description);
-        txtProductPrice = itemView.findViewById(R.id.product_price);
+        txtProductName = itemView.findViewById(R.id.Restaurant_Name);
+        txtProductDescription = itemView.findViewById(R.id.Restaurant_Timings);
+        txtProductPrice = itemView.findViewById(R.id.Restaurant_desc);
+
     }
 
     public void setItemClickListner(ItemClickListner listner) {
         this.listner = listner;
+
     }
 
     @Override
     public void onClick(View view) {
         listner.onClick(view, getAdapterPosition(), false);
+
     }
 }

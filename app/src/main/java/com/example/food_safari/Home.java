@@ -34,6 +34,7 @@ public class Home extends AppCompatActivity {
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText("Timings " + model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
+
             }
 
             @NonNull
@@ -42,6 +43,7 @@ public class Home extends AppCompatActivity {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
                 ProductViewHolder holder = new ProductViewHolder(view);
                 return holder;
+
             }
         };
         recyclerView.setAdapter(adapter);
