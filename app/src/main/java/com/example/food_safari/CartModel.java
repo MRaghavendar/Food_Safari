@@ -1,32 +1,32 @@
 package com.example.food_safari;
 
 public class CartModel {
-    private String age,id, price, quantity;
+    private String description, itemname, price, quantity;
 
     public CartModel() {
     }
 
-    public CartModel(String age, String id, String price, String quantity) {
-        this.age = age;
-        this.id = id;
+    public CartModel(String description, String itemname, String price, String quantity) {
+        this.description = description;
+        this.itemname = itemname;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getAge() {
-        return age;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getId() {
-        return id;
+    public String getItemname() {
+        return itemname;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
     }
 
     public String getPrice() {

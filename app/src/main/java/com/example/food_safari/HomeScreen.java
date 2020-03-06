@@ -64,7 +64,6 @@ public class HomeScreen extends AppCompatActivity {
         });
 
 
-
         aboutBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,12 +126,5 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        Button d= findViewById(R.id.d);
-        d.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HomeScreen.this,AdminNewRestaurant.class));
-            }
-        });
     }
 }
