@@ -69,7 +69,8 @@ public class Cart extends AppCompatActivity {
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("cartlist");
 
 
-        FirebaseRecyclerOptions<CartModel> options = new FirebaseRecyclerOptions.Builder<CartModel>().setQuery(cartListRef.child(user_id)
+        FirebaseRecyclerOptions<CartModel> options = new FirebaseRecyclerOptions.Builder<CartModel>()
+                .setQuery(cartListRef.child(user_id).child("orders")
                 , CartModel.class).build();
 
         FirebaseRecyclerAdapter<CartModel, CartViewHolder> adapter =
@@ -80,8 +81,8 @@ public class Cart extends AppCompatActivity {
                         holder.txtProductName.setText("Item= " + model.getId());
                         holder.txtProductPrice.setText("Price= " + model.getPrice());
 
-                        int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice()))) * ((Integer.valueOf(model.getQuantity())));
-                        overallPrice = overallPrice + oneTyprProductTPrice;
+//                        int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice()))) * ((Integer.valueOf(model.getQuantity())));
+//                        overallPrice = overallPrice + oneTyprProductTPrice;
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override

@@ -9,23 +9,23 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView txtProductName, txtProductPrice, txtProductQuantity;
-    private ItemClickListner itemClickListener;
+    private ItemClickListner subCategoryOnClickInterface;
 
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
         txtProductName = itemView.findViewById(R.id.cart_product_name);
         txtProductPrice = itemView.findViewById((R.id.cart_product_price));
         txtProductQuantity = itemView.findViewById(R.id.cart_product_quantity);
+        itemView.setOnClickListener(this);
 
     }
 
     @Override
-    public void onClick(View view) {
-        itemClickListener.onClick(view, false);
-
+    public void onClick(View v) {
+        subCategoryOnClickInterface.onClick(v, false);
     }
 
-    public void setItemClickListener(ItemClickListner itemClickListener) {
-        this.itemClickListener = itemClickListener;
+    public void SubCategoryInterfaceClick(ItemClickListner subCategoryOnClickInterface) {
+        this.subCategoryOnClickInterface = subCategoryOnClickInterface;
     }
 }
