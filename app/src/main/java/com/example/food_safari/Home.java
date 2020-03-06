@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +25,7 @@ public class Home extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter;
     FirebaseRecyclerAdapter<CategoryTwo, CategoryTwoViewHolder> adapter2;
-
+    ImageView btn_add_item;
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
 
@@ -37,6 +40,16 @@ public class Home extends AppCompatActivity {
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        btn_add_item = findViewById(R.id.addCart);
+        btn_add_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(new Intent(Home.this, Cart.class));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
 
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
@@ -61,9 +74,9 @@ public class Home extends AppCompatActivity {
                             @Override
                             public void onClick(View view, boolean isLongPressed) {
                                 Intent intent = new Intent(Home.this, SimpleDisplayActivity.class);
-                                intent.putExtra("userId", categoryTwo.getDataId());
-                                intent.putExtra("userName", categoryTwo.getDataName());
-                                intent.putExtra("userAge", categoryTwo.getDataAge());
+                                intent.putExtra("itemname", categoryTwo.getDataId());
+                                intent.putExtra("description", categoryTwo.getDataName());
+                                intent.putExtra("price", categoryTwo.getDataAge());
                                 startActivity(intent);
                             }
                         });

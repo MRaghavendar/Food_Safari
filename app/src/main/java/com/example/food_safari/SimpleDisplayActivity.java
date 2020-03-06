@@ -33,9 +33,9 @@ public class SimpleDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_simple_display);
 
         Intent intent = getIntent();
-        tempUserId = intent.getStringExtra("userId");
-        tempUserName = intent.getStringExtra("userName");
-        tempUserAge = intent.getStringExtra("userAge");
+        tempUserId = intent.getStringExtra("itemname");
+        tempUserName = intent.getStringExtra("description");
+        tempUserAge = intent.getStringExtra("price");
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -75,15 +75,15 @@ public class SimpleDisplayActivity extends AppCompatActivity {
 
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         final HashMap<String, Object> cartMap = new HashMap<String, Object>();
-        cartMap.put("id", tempUserId);
-        cartMap.put("price", tempUserName);
-        cartMap.put("age", tempUserAge);
+        cartMap.put("itemname", tempUserId);
+        cartMap.put("description", tempUserName);
+        cartMap.put("price", tempUserAge);
 //        cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", numberButton.getNumber());
 
         String user_id = mFirebaseAuth.getCurrentUser().getUid();
         //connecting the database reference
-      databaseReference.child("cartlist").child(user_id).child("orders").child(tempUserName)
+      databaseReference.child("cartlist").child(user_id).child("orders").child(tempUserId)
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

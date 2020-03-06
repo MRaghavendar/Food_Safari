@@ -83,11 +83,11 @@ public class Cart extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final CartModel model) {
                         holder.txtProductQuantity.setText("Quantity= " + model.getQuantity());
-                        holder.txtProductName.setText(model.getId());
-                        holder.txtProductPrice.setText("Price= " + model.getAge());
+                        holder.txtProductName.setText(model.getItemname());
+                        holder.txtProductPrice.setText("Price= " + model.getPrice());
 
-//                        Float oneTyprProductTPrice = ((Float.valueOf(model.getAge()))) * ((Float.valueOf(model.getQuantity())));
-//                        overallPrice = overallPrice + oneTyprProductTPrice;
+                        Float oneTyprProductTPrice = ((Float.valueOf(model.getPrice()))) * ((Float.valueOf(model.getQuantity())));
+                        overallPrice = overallPrice + oneTyprProductTPrice;
                         txtTotalAmount.setText("Total price= " + overallPrice);
 
 
@@ -106,16 +106,16 @@ public class Cart extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         if (i == 0) {
                                             Intent intent = new Intent(Cart.this, SimpleDisplayActivity.class);
-                                            intent.putExtra("userId", model.getAge());
-                                            intent.putExtra("userName", model.getId());
-                                            intent.putExtra("userAge", model.getPrice());
+                                            intent.putExtra("itemname", model.getItemname());
+                                            intent.putExtra("description", model.getPrice());
+                                            intent.putExtra("price", model.getPrice());
 
                                             startActivity(intent);
                                         }
                                         if (i == 1) {
                                             cartListRef.child(user_id)
                                                     .child("orders")
-                                                    .child(model.getPrice())
+                                                    .child(model.getItemname())
                                                     .removeValue()
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
