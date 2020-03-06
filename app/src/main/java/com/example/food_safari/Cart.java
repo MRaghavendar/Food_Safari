@@ -44,8 +44,11 @@ public class Cart extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
+
         NextProcessBtn = findViewById(R.id.next_process_btn);
         txtTotalAmount = findViewById(R.id.total_price);
+        txtTotalAmount.setText("Total price= " + overallPrice);
+
 
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +68,8 @@ public class Cart extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        txtTotalAmount.setText("Total price= " + overallPrice);
+
         user_id = mFirebaseAuth.getCurrentUser().getUid();
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("cartlist");
 
@@ -78,11 +83,13 @@ public class Cart extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final CartModel model) {
                         holder.txtProductQuantity.setText("Quantity= " + model.getQuantity());
-                        holder.txtProductName.setText("Item= " + model.getAge());
-                        holder.txtProductPrice.setText("Price= " + model.getId());
+                        holder.txtProductName.setText(model.getId());
+                        holder.txtProductPrice.setText("Price= " + model.getAge());
 
-                        Float oneTyprProductTPrice = ((Float.valueOf(model.getAge()))) * ((Float.valueOf(model.getQuantity())));
-                        overallPrice = overallPrice + oneTyprProductTPrice;
+//                        Float oneTyprProductTPrice = ((Float.valueOf(model.getAge()))) * ((Float.valueOf(model.getQuantity())));
+//                        overallPrice = overallPrice + oneTyprProductTPrice;
+                        txtTotalAmount.setText("Total price= " + overallPrice);
+
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -107,6 +114,7 @@ public class Cart extends AppCompatActivity {
                                         }
                                         if (i == 1) {
                                             cartListRef.child(user_id)
+                                                    .child("orders")
                                                     .child(model.getPrice())
                                                     .removeValue()
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
