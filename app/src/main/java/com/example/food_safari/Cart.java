@@ -31,7 +31,7 @@ public class Cart extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Button NextProcessBtn;
     private TextView txtTotalAmount;
-    private int overallPrice = 0;
+    private Float overallPrice = 0.0f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +71,18 @@ public class Cart extends AppCompatActivity {
 
         FirebaseRecyclerOptions<CartModel> options = new FirebaseRecyclerOptions.Builder<CartModel>()
                 .setQuery(cartListRef.child(user_id).child("orders")
-                , CartModel.class).build();
+                        , CartModel.class).build();
 
         FirebaseRecyclerAdapter<CartModel, CartViewHolder> adapter =
                 new FirebaseRecyclerAdapter<CartModel, CartViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final CartModel model) {
                         holder.txtProductQuantity.setText("Quantity= " + model.getQuantity());
-                        holder.txtProductName.setText("Item= " + model.getId());
-                        holder.txtProductPrice.setText("Price= " + model.getPrice());
+                        holder.txtProductName.setText("Item= " + model.getAge());
+                        holder.txtProductPrice.setText("Price= " + model.getId());
 
-//                        int oneTyprProductTPrice = ((Integer.valueOf(model.getPrice()))) * ((Integer.valueOf(model.getQuantity())));
-//                        overallPrice = overallPrice + oneTyprProductTPrice;
+                        Float oneTyprProductTPrice = ((Float.valueOf(model.getAge()))) * ((Float.valueOf(model.getQuantity())));
+                        overallPrice = overallPrice + oneTyprProductTPrice;
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
