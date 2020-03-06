@@ -26,11 +26,11 @@ import java.util.HashMap;
 
 public class Account extends AppCompatActivity {
     EditText nameEt;
-    TextView pwdTV;
+    TextView pwdTV,saveChangebtn,close_settings_btn;
     EditText emailet;
     EditText phoneET;
     EditText addresset;
-    Button Chgpasswordbtn, saveChangebtn;
+    Button Chgpasswordbtn;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
 
@@ -49,6 +49,16 @@ public class Account extends AppCompatActivity {
         phoneET = findViewById(R.id.accPhoneET);
         addresset = findViewById(R.id.accAddressTV);
         String user_id = firebaseAuth.getCurrentUser().getUid();
+        close_settings_btn = findViewById(R.id.close_settings_btn);
+        close_settings_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(new Intent(Account.this,HomeScreen.class));
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
         databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

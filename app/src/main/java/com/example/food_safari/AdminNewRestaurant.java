@@ -1,15 +1,11 @@
 package com.example.food_safari;
 
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,6 +26,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -46,6 +43,14 @@ public class AdminNewRestaurant extends AppCompatActivity
     private DatabaseReference ProductsRef;
     private ProgressDialog loadingBar;
 
+    Button btn_add_to_sublist;
+
+
+    EditText sub_category_edit_id,sub_category_edit_name,sub_category_edit_age;
+    CategoryTwo categoryTwo;
+    UploadItem uploadItem;
+    ArrayList<CategoryTwo> categoryTwos =new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +58,21 @@ public class AdminNewRestaurant extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_new_restaurant);
 
+        sub_category_edit_id = findViewById(R.id.edit_upload_sub_category_id);
+        sub_category_edit_name = findViewById(R.id.edit_upload_sub_category_name);
+        sub_category_edit_age = findViewById(R.id.edit_upload_sub_category_age);
+
+        btn_add_to_sublist = findViewById(R.id.btn_add_to_subList);
+        btn_add_to_sublist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!sub_category_edit_id.getText().toString().isEmpty()
+                        && !sub_category_edit_age.getText().toString().isEmpty()
+                        && !sub_category_edit_name.getText().toString().isEmpty()) {
+                    addToSubList(sub_category_edit_id.getText().toString(), sub_category_edit_name.getText().toString(), sub_category_edit_age.getText().toString());
+                }
+            }
+        });
 
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Restaurant Images");
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Restaurants");
@@ -60,9 +80,9 @@ public class AdminNewRestaurant extends AppCompatActivity
 
         AddNewProductButton = (Button) findViewById(R.id.add_new_product);
         InputProductImage = (ImageView) findViewById(R.id.select_product_image);
-        InputProductName = (EditText) findViewById(R.id.product_name);
-        InputProductDescription = (EditText) findViewById(R.id.product_description);
-        InputProductPrice = (EditText) findViewById(R.id.product_price);
+        InputProductName = (EditText) findViewById(R.id.Restaurant_Name);
+        InputProductDescription = (EditText) findViewById(R.id.Restaurant_Timings);
+        InputProductPrice = (EditText) findViewById(R.id.Restaurant_desc);
         loadingBar = new ProgressDialog(this);
 
 
@@ -210,34 +230,42 @@ public class AdminNewRestaurant extends AppCompatActivity
 
     private void SaveProductInfoToDatabase()
     {
-        HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("pid", productRandomKey);
-        productMap.put("date", saveCurrentDate);
-        productMap.put("time", saveCurrentTime);
-        productMap.put("description", Description);
-        productMap.put("image", downloadImageUrl);
-        productMap.put("category", CategoryName);
-        productMap.put("price", Price);
-        productMap.put("pname", Pname);
+       uploadItem=new UploadItem(Pname, Description, Price, CategoryName, downloadImageUrl, categoryTwos);
+//        HashMap<String, Object> productMap = new HashMap<>();
+//
+//        productMap.put("description", Description);
+//        productMap.put("image", downloadImageUrl);
+//        productMap.put("category", CategoryName);
+//        productMap.put("price", Price);
+//        productMap.put("pname", Pname);
 
-        ProductsRef.child(productRandomKey).updateChildren(productMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task)
-                    {
-                        if (task.isSuccessful())
-                        {
-
-                            loadingBar.dismiss();
-                            Toast.makeText(AdminNewRestaurant.this, "Product is added successfully..", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            loadingBar.dismiss();
-                            String message = task.getException().toString();
-                            Toast.makeText(AdminNewRestaurant.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        ProductsRef.child(Pname).setValue(uploadItem);
+        loadingBar.dismiss();
+//
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task)
+//                    {
+//                        if (task.isSuccessful())
+//                        {
+//
+//                            Toast.makeText(AdminNewRestaurant.this, "Product is added successfully..", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else
+//                        {
+//                            loadingBar.dismiss();
+//                            String message = task.getException().toString();
+//                            Toast.makeText(AdminNewRestaurant.this, "Error: " + message, Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+    }
+    private void addToSubList(String id,String name,String age)
+    {
+        categoryTwo = new CategoryTwo(name,id,age);
+        categoryTwos.add(categoryTwo);
+        sub_category_edit_id.setText("");
+        sub_category_edit_age.setText("");
+        sub_category_edit_name.setText("");
     }
 }
