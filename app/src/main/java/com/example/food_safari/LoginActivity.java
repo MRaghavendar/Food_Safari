@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnSignUp;
     Button loginBTN;
     FirebaseAuth mFirebaseAuth;
-    TextView createBTN;
+    TextView createBTN, adminLogin;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -36,20 +36,47 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.loginpassword);
 //        btnSignUp = findViewById(R.id.ForgotBTN);
         loginBTN = findViewById(R.id.userLoginBTN);
-
-        TextView forgotTV=findViewById(R.id.forgotTV);
-        forgotTV.setOnClickListener(new View.OnClickListener() {
+        adminLogin = findViewById(R.id.Adminlogin);
+        adminLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,ForgotPassword.class));
+                String email = emailId.getText().toString();
+                String pwd = password.getText().toString();
+                if (email.isEmpty()) {
+                    emailId.setError("Please enter email id");
+                    emailId.requestFocus();
+                } else if (pwd.isEmpty()) {
+                    password.setError("Please enter your password");
+                    password.requestFocus();
+                } else if (email.isEmpty() && pwd.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
+                } else if (!(email.isEmpty() && pwd.isEmpty())) {
+                    if (email.equalsIgnoreCase("admin") && pwd.equalsIgnoreCase("admin")) {
+                        Intent intent = new Intent(new Intent(LoginActivity.this, AdminNewRestaurant.class));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
             }
         });
 
-        createBTN= findViewById(R.id.link_signup);
+        TextView forgotTV = findViewById(R.id.forgotTV);
+        forgotTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgotPassword.class));
+            }
+        });
+
+        createBTN = findViewById(R.id.link_signup);
         createBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,SignupActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
 
@@ -102,7 +129,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
 
 
 }
