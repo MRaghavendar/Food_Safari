@@ -10,4 +10,7 @@
     <string name="signup">signup</string>
     <string name="create_acc">create account</string>
     <string name="rememberme">Remember Me</string>
+    <string name="title_activity_tabbed_home">TabbedHome</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.food_safari;
+package com.example.food_safari.model;
 
 public class CategoryTwo {
 

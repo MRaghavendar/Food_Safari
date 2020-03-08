@@ -7,6 +7,9 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.food_safari.account.LoginActivity;
+import com.example.food_safari.account.SignupActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     Button loginBtn, signBTN;

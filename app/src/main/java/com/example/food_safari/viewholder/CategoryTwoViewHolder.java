@@ -1,10 +1,13 @@
-package com.example.food_safari;
+package com.example.food_safari.viewholder;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.food_safari.interfaces.ItemClickListner;
+import com.example.food_safari.R;
 
 public class CategoryTwoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

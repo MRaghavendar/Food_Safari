@@ -1,20 +1,23 @@
-package com.example.food_safari;
+package com.example.food_safari.model;
 
-public class Products {
+import java.util.ArrayList;
+
+public class UploadItem {
+
     private String pname, description, price, category, image;
+    private ArrayList<CategoryTwo> data;
 
-    public Products() {
-
+    public UploadItem() {
     }
 
-    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time) {
+    public UploadItem(String pname, String description, String price, String category, String image, ArrayList<CategoryTwo> data) {
         this.pname = pname;
         this.description = description;
         this.price = price;
-        this.image = image;
         this.category = category;
+        this.image = image;
+        this.data = data;
     }
-
 
     public String getPname() {
         return pname;
@@ -40,14 +43,6 @@ public class Products {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -56,4 +51,19 @@ public class Products {
         this.category = category;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public ArrayList<CategoryTwo> getData() {
+        return data;
+    }
+
+    public void setData(ArrayList<CategoryTwo> data) {
+        this.data = data;
+    }
 }

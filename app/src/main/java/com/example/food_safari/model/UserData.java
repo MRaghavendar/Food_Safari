@@ -1,4 +1,4 @@
-package com.example.food_safari;
+package com.example.food_safari.model;
 
 //Storing the user details to the Firebase database
 public class UserData {

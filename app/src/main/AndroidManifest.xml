@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity android:name=".SimpleDisplayActivity" />
         <activity android:name=".AdminNewRestaurant" />
         <activity android:name=".OnlineSupport" />
@@ -20,15 +20,13 @@
         <activity android:name=".PlacingOrder" />
         <activity android:name=".AboutUs" />
         <activity android:name=".HomeScreen" />
-        <activity android:name=".Account" />
+        <activity android:name=".account.Account" />
         <activity android:name=".Cart" />
-        <activity android:name=".ForgotPassword" />
+        <activity android:name=".account.ForgotPassword" />
         <activity android:name=".Payment" />
         <activity android:name=".Home" />
-        <activity android:name=".Menu" />
-        <activity android:name=".Restaurant" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".account.LoginActivity" />
+        <activity android:name=".account.SignupActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
