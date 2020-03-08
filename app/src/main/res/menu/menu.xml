@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.accidentzoneidentifier.MainActivity">
     <item
+        android:id="@+id/search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="settings"
@@ -15,5 +21,6 @@
         android:title="About"
         android:visible="true"
         app:showAsAction="always" />
+
 
 </menu>

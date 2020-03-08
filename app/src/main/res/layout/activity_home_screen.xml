@@ -31,12 +31,6 @@
         android:text="Restaurants" />
 
     <Button
-        android:id="@+id/ordersBTN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Orders" />
-
-    <Button
         android:id="@+id/cartBTN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

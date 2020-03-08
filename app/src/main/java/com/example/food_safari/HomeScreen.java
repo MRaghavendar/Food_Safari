@@ -35,7 +35,7 @@ public class HomeScreen extends AppCompatActivity {
         accountBTN = findViewById(R.id.accountBTN);
         restaurantsBTN = findViewById(R.id.restaurantsBTN);
         cartBTN = findViewById(R.id.cartBTN);
-        ordersBTN = findViewById(R.id.ordersBTN);
+//        ordersBTN = findViewById(R.id.ordersBTN);
         aboutBTN = findViewById(R.id.aboutBTN);
         deleteAccBTN = findViewById(R.id.deleteAccBTN);
         onlineChat = findViewById(R.id.onlineChat);
@@ -55,13 +55,13 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        ordersBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(HomeScreen.this, SimpleDisplayActivity.class));
-
-            }
-        });
+//        ordersBTN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(HomeScreen.this, SimpleDisplayActivity.class));
+//
+//            }
+//        });
 
 
         aboutBTN.setOnClickListener(new View.OnClickListener() {
