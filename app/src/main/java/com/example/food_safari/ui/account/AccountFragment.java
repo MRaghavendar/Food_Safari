@@ -1,19 +1,25 @@
-package com.example.food_safari.account;
+package com.example.food_safari.ui.account;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
 
-import com.example.food_safari.HomeScreen;
+import com.example.food_safari.NavigationHome;
 import com.example.food_safari.R;
+import com.example.food_safari.account.ForgotPassword;
+import com.example.food_safari.account.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,39 +32,90 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class Account extends AppCompatActivity {
+public class AccountFragment extends Fragment {
+
     EditText nameEt;
-    TextView pwdTV,saveChangebtn,close_settings_btn;
+    TextView pwdTV, saveChangebtn, close_settings_btn;
     EditText emailet;
     EditText phoneET;
     EditText addresset;
-    Button Chgpasswordbtn;
+    Button Chgpasswordbtn, deleteBTN;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        final View root = inflater.inflate(R.layout.activity_account, container, false);
 
         //initializing the firebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
-
         //getting the reference to account layout
-        nameEt = findViewById(R.id.accNameET);
-        pwdTV = findViewById(R.id.accPasswordET);
-        emailet = findViewById(R.id.accEmailET);
-        phoneET = findViewById(R.id.accPhoneET);
-        addresset = findViewById(R.id.accAddressTV);
+        nameEt = root.findViewById(R.id.accNameET);
+        pwdTV = root.findViewById(R.id.accPasswordET);
+        emailet = root.findViewById(R.id.accEmailET);
+        phoneET = root.findViewById(R.id.accPhoneET);
+        addresset = root.findViewById(R.id.accAddressTV);
+        deleteBTN = root.findViewById(R.id.deleteAccount);
         String user_id = firebaseAuth.getCurrentUser().getUid();
-        close_settings_btn = findViewById(R.id.close_settings_btn);
+        Chgpasswordbtn = root.findViewById(R.id.ChangePwdBTN);
+        Chgpasswordbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent b1 = new Intent(getActivity().getApplication(), ForgotPassword.class);
+                startActivity(b1);
+            }
+        });
+        close_settings_btn = root.findViewById(R.id.close_settings_btn);
         close_settings_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(new Intent(Account.this, HomeScreen.class));
+                Intent intent = new Intent(new Intent(getActivity().getApplication(), NavigationHome.class));
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+            }
+        });
+        deleteBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                {
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                    dialog.setTitle("Are you sure?");
+                    dialog.setMessage("Deleting this account will completely removes your account and you won't be able to access this app");
+                    dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            user.delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(getActivity().getApplication(), "Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                                Log.d("deleted", "User account deleted.");
+                                                Intent intent = new Intent(getActivity().getApplication(), LoginActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(getActivity().getApplication(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = dialog.create();
+                    alertDialog.show();
+                }
             }
         });
         databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
@@ -82,19 +139,17 @@ public class Account extends AppCompatActivity {
 
             }
         });
-
-
-        saveChangebtn = findViewById(R.id.saveChangeBTN);
+        saveChangebtn = root.findViewById(R.id.saveChangeBTN);
         saveChangebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 System.out.println("entered");
-                nameEt = findViewById(R.id.accNameET);
-                pwdTV = findViewById(R.id.accPasswordET);
-                emailet = findViewById(R.id.accEmailET);
-                phoneET = findViewById(R.id.accPhoneET);
-                addresset = findViewById(R.id.accAddressTV);
+                nameEt = root.findViewById(R.id.accNameET);
+                pwdTV = root.findViewById(R.id.accPasswordET);
+                emailet = root.findViewById(R.id.accEmailET);
+                phoneET = root.findViewById(R.id.accPhoneET);
+                addresset = root.findViewById(R.id.accAddressTV);
                 final String user_id = firebaseAuth.getCurrentUser().getUid();
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
                 databaseReference.addValueEventListener(new ValueEventListener() {
@@ -124,7 +179,7 @@ public class Account extends AppCompatActivity {
                                         }
                                     }
                                 });
-                        Toast.makeText(Account.this, "Updated succesfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity().getApplication(), "Updated succesfully", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -133,19 +188,13 @@ public class Account extends AppCompatActivity {
                     }
                 });
 
-            }
-        });
-        Chgpasswordbtn = findViewById(R.id.ChangePwdBTN);
-        Chgpasswordbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent b1 = new Intent(Account.this, ForgotPassword.class);
-                startActivity(b1);
             }
         });
 
 
+        return root;
     }
+
 
 }
