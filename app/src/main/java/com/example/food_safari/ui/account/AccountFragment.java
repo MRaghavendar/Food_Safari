@@ -3,6 +3,8 @@ package com.example.food_safari.ui.account;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.example.food_safari.NavigationHome;
 import com.example.food_safari.R;
 import com.example.food_safari.account.ForgotPassword;
@@ -32,6 +35,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
+
 public class AccountFragment extends Fragment {
 
     EditText nameEt;
@@ -42,6 +47,9 @@ public class AccountFragment extends Fragment {
     Button Chgpasswordbtn, deleteBTN;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+    AwesomeValidation         mAwesomeValidation = new AwesomeValidation(BASIC);
+
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -58,6 +66,40 @@ public class AccountFragment extends Fragment {
         addresset = root.findViewById(R.id.accAddressTV);
         deleteBTN = root.findViewById(R.id.deleteAccount);
         String user_id = firebaseAuth.getCurrentUser().getUid();
+        mAwesomeValidation.addValidation(nameEt, getString(R.string.validStr), getString(R.string.err_name));
+        String telephone ="^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$";
+
+        mAwesomeValidation.addValidation(phoneET, telephone, getString(R.string.err_tel));
+        mAwesomeValidation.addValidation( emailet, android.util.Patterns.EMAIL_ADDRESS, getString(R.string.err_email));
+
+        phoneET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+            int len;
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (len > phoneET.getText().length() ){
+                    len--;
+                    return;
+                }
+                len = phoneET.getText().length();
+
+                if (len == 4 || len== 8) {
+                    String number = phoneET.getText().toString();
+                    String dash = number.charAt(number.length() - 1) == '-' ? "" : "-";
+                    number = number.substring(0, (len - 1)) + dash + number.substring((len - 1), number.length());
+                    phoneET.setText(number);
+                    phoneET.setSelection(number.length());
+                }
+            }
+        });
+
+
         Chgpasswordbtn = root.findViewById(R.id.ChangePwdBTN);
         Chgpasswordbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,54 +185,55 @@ public class AccountFragment extends Fragment {
         saveChangebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                System.out.println("entered");
-                nameEt = root.findViewById(R.id.accNameET);
-                pwdTV = root.findViewById(R.id.accPasswordET);
-                emailet = root.findViewById(R.id.accEmailET);
-                phoneET = root.findViewById(R.id.accPhoneET);
-                addresset = root.findViewById(R.id.accAddressTV);
-                final String user_id = firebaseAuth.getCurrentUser().getUid();
-                databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String name = nameEt.getText().toString();
+                if (mAwesomeValidation.validate()) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    System.out.println("entered");
+                    nameEt = root.findViewById(R.id.accNameET);
+                    pwdTV = root.findViewById(R.id.accPasswordET);
+                    emailet = root.findViewById(R.id.accEmailET);
+                    phoneET = root.findViewById(R.id.accPhoneET);
+                    addresset = root.findViewById(R.id.accAddressTV);
+                    final String user_id = firebaseAuth.getCurrentUser().getUid();
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user_id);
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            String name = nameEt.getText().toString();
 //                        String password = pwdTV.getText().toString();
-                        String email = emailet.getText().toString();
-                        String phonenumber = phoneET.getText().toString();
-                        String address = addresset.getText().toString();
-                        DataSnapshot nodeDataSnapshot = dataSnapshot.getChildren().iterator().next();
-                        String key = nodeDataSnapshot.getKey(); // this key is `K1NRz9l5PU_0CFDtgXz`
-                        String path = "/" + dataSnapshot.getKey() + "/" + user_id;
-                        HashMap<String, Object> result = new HashMap<>();
-                        databaseReference.child("address").setValue(address);
-                        databaseReference.child("email").setValue(email);
-                        databaseReference.child("name").setValue(name);
-                        databaseReference.child("phonenumber").setValue(phonenumber);
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String email = emailet.getText().toString();
+                            String phonenumber = phoneET.getText().toString();
+                            String address = addresset.getText().toString();
+                            DataSnapshot nodeDataSnapshot = dataSnapshot.getChildren().iterator().next();
+                            String key = nodeDataSnapshot.getKey(); // this key is `K1NRz9l5PU_0CFDtgXz`
+                            String path = "/" + dataSnapshot.getKey() + "/" + user_id;
+                            HashMap<String, Object> result = new HashMap<>();
+                            databaseReference.child("address").setValue(address);
+                            databaseReference.child("email").setValue(email);
+                            databaseReference.child("name").setValue(name);
+                            databaseReference.child("phonenumber").setValue(phonenumber);
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                        user.updateEmail(email)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Log.d("", "User email address updated.");
+                            user.updateEmail(email)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Log.d("", "User email address updated.");
+                                            }
                                         }
-                                    }
-                                });
-                        Toast.makeText(getActivity().getApplication(), "Updated succesfully", Toast.LENGTH_SHORT).show();
-                    }
+                                    });
+                            Toast.makeText(getActivity().getApplication(), "Updated succesfully", Toast.LENGTH_SHORT).show();
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
 
 
-            }
-        });
+                }
+            } });
 
 
         return root;

@@ -25,7 +25,19 @@
     <string name="menu_share">About us</string>
     <string name="menu_send">Cart</string>
 
+    <string name="err_name">Please enter a valid Name</string>
+    <string name="err_tel">Enter Valid 10 digit phone number</string>
+    <string name="err_email">Enter Correct email address</string>
+    <string name="err_password">Your password must be have at least 8 characters long with\n1 uppercase
+        &amp; 1 lowercase character\n1 special character\n1 number</string>
+    <string name="err_password_confirmation">Password and confirm password should match</string>
+
+
+
+
+
     <string name="shipment_prompt">Select Pickup/In-store/Delivery</string>
+    <string name="validStr">[a-zA-Z\\s]+</string>
     <string-array name="shipment_mode">
         <item>Pickup</item>
         <item>In-store</item>
