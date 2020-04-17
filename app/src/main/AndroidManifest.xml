@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+
         android:name=".ChatApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,22 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchActivity" />
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
+        <activity android:name=".PaymentActivity"></activity>
+        <activity
+            android:name=".NavigationHome"
+            android:label="@string/title_activity_navigation_home"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SimpleDisplayActivity" />
         <activity android:name=".AdminNewRestaurant" />
-        <activity android:name=".OnlineSupport" />
         <activity android:name=".ConfirmFinalOrderActivity" />
-        <activity android:name=".PlacingOrder" />
-        <activity android:name=".AboutUs" />
-        <activity android:name=".HomeScreen" />
-        <activity android:name=".account.Account" />
         <activity android:name=".Cart" />
         <activity android:name=".account.ForgotPassword" />
-        <activity android:name=".Payment" />
-        <activity android:name=".Home" />
-        <activity android:name=".account.LoginActivity" />
-        <activity android:name=".account.SignupActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".account.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".account.SignupActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
