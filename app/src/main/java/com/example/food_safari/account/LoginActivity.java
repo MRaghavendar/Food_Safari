@@ -12,8 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.food_safari.AdminNewRestaurant;
-import com.example.food_safari.Home;
-import com.example.food_safari.HomeScreen;
+import com.example.food_safari.NavigationHome;
 import com.example.food_safari.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -90,8 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if (mFirebaseUser != null) {
                     Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this, Home.class);
-                    startActivity(i);
+//                    Intent i = new Intent(LoginActivity.this, Home.class);
+//                    startActivity(i);
                 } else {
                     Toast.makeText(LoginActivity.this, "Please Login", Toast.LENGTH_SHORT).show();
                 }
@@ -118,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent intToHome = new Intent(LoginActivity.this, HomeScreen.class);
+                                Intent intToHome = new Intent(LoginActivity.this, NavigationHome.class);
                                 startActivity(intToHome);
                             }
                         }
