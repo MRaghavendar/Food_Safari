@@ -79,11 +79,11 @@ public class AdminNewRestaurant extends AppCompatActivity
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Restaurants");
 
 
-        AddNewProductButton = (Button) findViewById(R.id.add_new_product);
-        InputProductImage = (ImageView) findViewById(R.id.select_product_image);
-        InputProductName = (EditText) findViewById(R.id.Restaurant_Name);
-        InputProductDescription = (EditText) findViewById(R.id.Restaurant_Timings);
-        InputProductPrice = (EditText) findViewById(R.id.Restaurant_desc);
+        AddNewProductButton = findViewById(R.id.add_new_product);
+        InputProductImage = findViewById(R.id.select_product_image);
+        InputProductName = findViewById(R.id.Restaurant_Name);
+        InputProductDescription = findViewById(R.id.Restaurant_Timings);
+        InputProductPrice = findViewById(R.id.Restaurant_desc);
         loadingBar = new ProgressDialog(this);
 
 

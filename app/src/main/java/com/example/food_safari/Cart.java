@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,7 +45,14 @@ public class Cart extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         mFirebaseAuth = FirebaseAuth.getInstance();
         recyclerView.setLayoutManager(layoutManager);
-
+        CharSequence mTitle = getTitle();
+        mTitle = "Cart";
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle(mTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
         NextProcessBtn = findViewById(R.id.next_process_btn);
@@ -124,7 +132,7 @@ public class Cart extends AppCompatActivity {
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
                                                                 Toast.makeText(Cart.this, "Item removed", Toast.LENGTH_SHORT).show();
-                                                                Intent intent = new Intent(Cart.this, Home.class);
+                                                                Intent intent = new Intent(Cart.this, NavigationHome.class);
                                                                 startActivity(intent);
                                                             }
 
@@ -157,5 +165,10 @@ public class Cart extends AppCompatActivity {
         adapter.startListening();
 
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
