@@ -9,9 +9,28 @@
     <string name="create_acc">create account</string>
     <string name="rememberme">Remember Me</string>
 
-    <string name="open">Open</string>
-    <string name="close">Close</string>
 
+    <string name="title_activity_navigation_home">NavigationHome</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Restaurants</string>
+    <string name="menu_gallery">Account</string>
+    <string name="menu_slideshow">Chat with customer service</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">About us</string>
+    <string name="menu_send">Cart</string>
+
+    <string name="shipment_prompt">Select Pickup/In-store/Delivery</string>
+    <string-array name="shipment_mode">
+        <item>Pickup</item>
+        <item>In-store</item>
+        <item>Delivery</item>
+    </string-array>
 
 
 </resources>
