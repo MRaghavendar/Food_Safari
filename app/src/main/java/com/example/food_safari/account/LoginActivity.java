@@ -51,17 +51,17 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (pwd.isEmpty()) {
                     password.setError("Please enter your password");
                     password.requestFocus();
-                } else if (email.isEmpty() && pwd.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Fields Are Empty!", Toast.LENGTH_SHORT).show();
-                } else if (!(email.isEmpty() && pwd.isEmpty())) {
-                    if (email.equalsIgnoreCase("admin") && pwd.equalsIgnoreCase("admin")) {
-                        Intent intent = new Intent(new Intent(LoginActivity.this, AdminNewRestaurant.class));
+               } else if (!(email.isEmpty() && pwd.isEmpty())) {
+                    if (email.equalsIgnoreCase("admin")
+                            && pwd.equalsIgnoreCase("admin")) {
+                        Intent intent = new Intent(new Intent(LoginActivity.this,
+                                AdminNewRestaurant.class));
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }else {
-                        Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(LoginActivity.this,
+                                "Invalid credentials", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -89,8 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
                 if (mFirebaseUser != null) {
                     Toast.makeText(LoginActivity.this, "You are logged in", Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(LoginActivity.this, Home.class);
-//                    startActivity(i);
                 } else {
                     Toast.makeText(LoginActivity.this, "Please Login", Toast.LENGTH_SHORT).show();
                 }
@@ -115,7 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,
+                                        task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             } else {
                                 Intent intToHome = new Intent(LoginActivity.this, NavigationHome.class);
                                 startActivity(intToHome);
@@ -124,14 +123,8 @@ public class LoginActivity extends AppCompatActivity {
                     });
                 } else {
                     Toast.makeText(LoginActivity.this, "Error Occurred!", Toast.LENGTH_SHORT).show();
-
                 }
-
             }
         });
-
-
     }
-
-
 }
