@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@drawable/bcolor">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_settings"
@@ -134,7 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Phone number"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -31,11 +31,16 @@
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.food_safari.ui.aboutus.AboutusFragment"
-        android:label="@string/menu_share"
+        android:label="Log out"
         tools:layout="@layout/activity_about_us" />
 
     <fragment
         android:id="@+id/nav_cart"
         android:name="com.example.food_safari.ui.cart.CartFragment"
         android:label="@string/menu_send" />
+
+    <fragment
+        android:id="@+id/logout"
+        android:name="com.example.food_safari.ui.logout.LogoutFragment"
+        android:label="@string/logout" />
 </navigation>

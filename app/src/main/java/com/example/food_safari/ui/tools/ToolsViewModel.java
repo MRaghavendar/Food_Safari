@@ -1,19 +1,28 @@
 package com.example.food_safari.ui.tools;
 
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class ToolsViewModel extends ViewModel {
+import com.example.food_safari.R;
 
-    private MutableLiveData<String> mText;
+public class ToolsViewModel extends RecyclerView.ViewHolder {
 
-    public ToolsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is tools fragment");
-    }
+    public TextView orderNumber,totalPrice,deliveryType,shippingAddress,time;
 
-    public LiveData<String> getText() {
-        return mText;
+
+
+    public ToolsViewModel(View itemView) {
+        super(itemView);
+        deliveryType = itemView.findViewById(R.id.delivery_type);
+        orderNumber = itemView.findViewById(R.id.order_number);
+        totalPrice = itemView.findViewById(R.id.order_totalprice);
+        shippingAddress = itemView.findViewById(R.id.addressOrder);
+        time = itemView.findViewById(R.id.OrderTime);
+
     }
 }

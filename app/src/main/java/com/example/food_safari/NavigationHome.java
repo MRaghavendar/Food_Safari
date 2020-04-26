@@ -39,6 +39,9 @@ import static com.example.food_safari.ui.home.HomeFragment.recyclerView;
 
 public class NavigationHome extends AppCompatActivity {
 
+    DatabaseReference databaseReference;
+    String name;
+    NavController navController;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -49,14 +52,13 @@ public class NavigationHome extends AppCompatActivity {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_restaurant, R.id.nav_account, R.id.nav_chat,
-                R.id.nav_tools, R.id.nav_about, R.id.nav_cart)
+                R.id.nav_tools, R.id.nav_about, R.id.nav_cart, R.id.logout)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -67,27 +69,23 @@ public class NavigationHome extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            String name;
-            // Name, email address, and profile photo Url
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("userdata").child(user.getUid());
-            databaseReference.addValueEventListener(
-                    new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            String name = dataSnapshot.child("name").getValue().toString();
-                            profilenameET.setText(name);
-                        }
+            databaseReference = FirebaseDatabase.getInstance().getReference()
+                    .child("userdata").child(user.getUid());
+            databaseReference.addValueEventListener(new ValueEventListener() {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                        }
-                    });
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String name = dataSnapshot.child("name").getValue().toString();
+                    profilenameET.setText(name);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
             String email = user.getEmail();
             profileEmailET.setText(email);
-
         }
-
-
     }
 
     @Override
@@ -109,7 +107,6 @@ public class NavigationHome extends AppCompatActivity {
                     recyclerView.setAdapter(HomeFragment.adapter);
                 } else {
                     search(newText);
-
                 }
                 return false;
             }

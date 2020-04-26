@@ -9,56 +9,52 @@
     android:background="@drawable/bcolor"
     app:cardElevation="15dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/Restaurant_Name"
+            android:id="@+id/delivery_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="Type of Delivery"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#004D40"
-            android:textSize="24sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/product_image"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_below="@+id/Restaurant_Name"
-            android:layout_marginTop="2dp"
-            android:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/Restaurant_desc"
+            android:id="@+id/order_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/product_image"
-            android:text="Description"
-            android:textAlignment="center"
-            android:textColor="#004D40"
-            android:textSize="20dp" />
+            android:text="order number"
+            android:textColor="#004D40" />
+        <TextView
+            android:id="@+id/order_totalprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="order price"
+            android:textColor="#004D40" />
 
         <TextView
-            android:id="@+id/Restaurant_Timings"
+            android:id="@+id/addressOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/Restaurant_desc"
             android:layout_marginTop="2dp"
-            android:text="Timings"
-            android:textAlignment="center"
-            android:textColor="#004D40"
-            android:textSize="18dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menuRecycler"
+            android:text="Order items"
+            android:textColor="#004D40" />
+        <TextView
+            android:id="@+id/OrderTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Restaurant_Timings" />
+            android:layout_below="@+id/Restaurant_desc"
+            android:layout_marginTop="2dp"
+            android:text="Order items"
+            android:textColor="#004D40" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>
