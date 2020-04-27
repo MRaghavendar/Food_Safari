@@ -49,12 +49,11 @@ public class ToolsFragment extends Fragment {
                new FirebaseRecyclerAdapter<OrderOne, ToolsViewModel>(options) {
                    @Override
                    protected void onBindViewHolder(@NonNull ToolsViewModel toolsViewModel, int i, @NonNull OrderOne orderOne) {
-                       System.out.println("pradeep"+orderOne.getTotalPrice());
                        toolsViewModel.totalPrice.setText("Price: " + orderOne.getTotalPrice());
-                       toolsViewModel.time.setText(orderOne.getTime());
+                       toolsViewModel.time.setText("Order placed on "+orderOne.getTime());
                        toolsViewModel.shippingAddress.setText("Address: "+ orderOne.getAddress());
                        toolsViewModel.orderNumber.setText("Order number:"+orderOne.getOrderNumber());
-                       toolsViewModel.deliveryType.setText(orderOne.getTypeOfDelivery());
+                       toolsViewModel.deliveryType.setText("type of delivery: "+orderOne.getTypeOfDelivery());
                    }
 
                    @NonNull

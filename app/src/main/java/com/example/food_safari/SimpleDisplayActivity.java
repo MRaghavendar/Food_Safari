@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
@@ -40,6 +41,14 @@ public class SimpleDisplayActivity extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         databaseReference =  FirebaseDatabase.getInstance().getReference();
+        CharSequence mTitle = getTitle();
+        mTitle = "Edit cart";
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        actionBar.setDisplayShowTitleEnabled(true);
+        actionBar.setTitle(mTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         //view init
         textView_id = findViewById(R.id.main_text_id);

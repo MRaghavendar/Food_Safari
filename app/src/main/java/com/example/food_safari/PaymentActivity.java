@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -87,7 +88,9 @@ public class PaymentActivity extends AppCompatActivity {
                     SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
                     String saveCurrentTime = currentTime.format(calendar.getTime());
 
-                    orderNumber = saveCurrentTime;
+                    Random rand=new Random();
+                    long l=Math.abs(rand.nextLong()+1000000);
+                    orderNumber = ""+l;
 
                     Intent intent = getIntent();
                     totalPrice = intent.getStringExtra("price");

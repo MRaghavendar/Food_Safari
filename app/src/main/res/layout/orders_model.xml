@@ -6,12 +6,13 @@
     android:layout_marginStart="15dp"
     android:layout_marginTop="20dp"
     android:layout_marginEnd="15dp"
-    android:background="@drawable/bcolor"
+    android:background="@drawable/background_transparent"
     app:cardElevation="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bcolor"
         android:orientation="vertical">
 
         <TextView
@@ -22,6 +23,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#004D40"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 
@@ -29,14 +31,30 @@
             android:id="@+id/order_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_transparent"
             android:text="order number"
-            android:textColor="#004D40" />
+            android:textColor="#004D40"
+            android:textSize="16dp" />
+
         <TextView
             android:id="@+id/order_totalprice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_transparent"
             android:text="order price"
-            android:textColor="#004D40" />
+            android:textColor="#004D40"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/OrderTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Restaurant_desc"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/background_transparent"
+            android:text="Order items"
+            android:textColor="#004D40"
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/addressOrder"
@@ -44,16 +62,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/Restaurant_desc"
             android:layout_marginTop="2dp"
+            android:background="@drawable/background_transparent"
             android:text="Order items"
-            android:textColor="#004D40" />
-        <TextView
-            android:id="@+id/OrderTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/Restaurant_desc"
-            android:layout_marginTop="2dp"
-            android:text="Order items"
-            android:textColor="#004D40" />
+            android:textColor="#004D40"
+            android:textSize="16dp" />
 
     </LinearLayout>
 

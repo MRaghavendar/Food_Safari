@@ -108,7 +108,6 @@ public class Cart extends AppCompatActivity {
                                 CharSequence[] options = new CharSequence[]{
                                         "Edit",
                                         "Remove"
-
                                 };
                                 AlertDialog.Builder builder = new AlertDialog.Builder(Cart.this);
                                 builder.setTitle("Cart Options");
@@ -118,7 +117,7 @@ public class Cart extends AppCompatActivity {
                                         if (i == 0) {
                                             Intent intent = new Intent(Cart.this, SimpleDisplayActivity.class);
                                             intent.putExtra("itemname", model.getItemname());
-                                            intent.putExtra("description", model.getPrice());
+                                            intent.putExtra("description", model.getDescription());
                                             intent.putExtra("price", model.getPrice());
 
                                             startActivity(intent);

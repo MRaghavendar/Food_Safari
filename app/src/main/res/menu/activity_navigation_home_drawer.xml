@@ -18,7 +18,7 @@
             android:title="@string/menu_send" />
         <item
             android:id="@+id/nav_tools"
-            android:icon="@drawable/delete"
+            android:icon="@drawable/order"
             android:title="@string/menu_tools" />
     </group>
 

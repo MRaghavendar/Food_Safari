@@ -2,6 +2,7 @@ package com.example.food_safari;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -45,30 +46,33 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity implements Adap
         spinner = findViewById(R.id.spinner);
 
         spinner.setOnItemSelectedListener(this);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.shipment_mode, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
+            deliveryType = spinner.getSelectedItem().toString();
+            confirmOrderbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String name = nameEd.getText().toString();
+                    String addrs = addressEd.getText().toString();
+                    String City = cityEd.getText().toString();
+                    String phn = phoneEd.getText().toString();
+                    address = name + "\n" + addrs + "\nCity " + City + "\nPhone number " + phn;
+                    System.out.println("address"+address);
+                    Log.d("addresspradeep",address);
+                    if (name.length() == 0 && addrs.length() == 0 && City.length() == 0 && phn.length() == 0) {
+                        Toast.makeText(ConfirmFinalOrderActivity.this, "Enter All Details to continue", Toast.LENGTH_SHORT).show();
+                    } else {
+                    Intent intent = new Intent(ConfirmFinalOrderActivity.this, PaymentActivity.class);
+                    intent.putExtra("addr", address);
+                    intent.putExtra("price", totalAmount);
+                    intent.putExtra("dlvy", deliveryType);
+                    startActivity(intent);
+                }}
+            });
 
-
-        deliveryType = spinner.getSelectedItem().toString();
-        address = nameEd.getText().toString() + "\n" +
-                addressEd.getText().toString() + "\nCity " +
-                cityEd.getText().toString() + "\nPhone number " + phoneEd.getText().toString();
-        confirmOrderbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ConfirmFinalOrderActivity.this, PaymentActivity.class);
-                intent.putExtra("addr", address);
-                intent.putExtra("price", totalAmount);
-                intent.putExtra("dlvy", deliveryType);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -87,7 +91,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity implements Adap
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-       // Toast.makeText(ConfirmFinalOrderActivity.this,"Please select Item",Toast.LENGTH_LONG).show();
+        // Toast.makeText(ConfirmFinalOrderActivity.this,"Please select Item",Toast.LENGTH_LONG).show();
 
     }
 }
