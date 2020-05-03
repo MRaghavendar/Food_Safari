@@ -18,4 +18,9 @@ Section number: 44692-04
 Dr. Dr. Zhengrui Qin - Assistant Professor, School Of Computer Science and Information Systems
 ### Project Description:
 Food Safari is an Android application that would help restaurants and app users in Missouri to deliver and order food online respectively. Customers can search various food items served at all restaurants, order online and get food home delivered across different cities in Missouri.
+### Test Credentials
+Username : test@example.com
+password : Demo.123
+### References
+- [https://firebase.google.com/docs/android/setup](https://firebase.google.com/docs/android/setup)
 
