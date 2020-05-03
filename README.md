@@ -1,6 +1,8 @@
 # Food Safari Android Application
 Section number: 44692-04
 
+![App icon](https://github.com/saikirandd/Food_Safari/blob/master/app/src/main/res/drawable/appicon%20-%20Copy.png)
+
 
 ## Project Graduate Directed Project Team:
 Pradeepkumar Theegala
