@@ -5,13 +5,13 @@ Section number: 44692-04
 
 
 ## Project Graduate Directed Project Team:
-Pradeepkumar Theegala
-Sai Kiran Doddapaneni
-Raghavendra Reddy Maddelavedu
-Nishanth Reddy Devi Reddy
-Revanth Davuluri
-Rahul Mallampati
-Manasa Ginjupalli
+- Pradeepkumar Theegala
+- Sai Kiran Doddapaneni
+- Raghavendra Reddy Maddelavedu
+- Nishanth Reddy Devi Reddy
+- Revanth Davuluri
+- Rahul Mallampati
+- Manasa Ginjupalli
 
 
 ### Project Client:
