@@ -1,9 +1,8 @@
 # Food Safari Android Application
+Course: GRAD DIRECT PROJECT
 Section number: 44692-04
 
 ![App icon](https://github.com/saikirandd/Food_Safari/blob/master/app/src/main/res/drawable/appicon%20-%20Copy.png)
-
-
 ## Project Graduate Directed Project Team:
 - Pradeepkumar Theegala
 - Sai Kiran Doddapaneni
@@ -12,15 +11,13 @@ Section number: 44692-04
 - Revanth Davuluri
 - Rahul Mallampati
 - Manasa Ginjupalli
-
-
 ### Project Client:
-Dr. Dr. Zhengrui Qin - Assistant Professor, School Of Computer Science and Information Systems
+- Dr. Dr. Zhengrui Qin - Assistant Professor, School Of Computer Science and Information Systems
 ### Project Description:
 Food Safari is an Android application that would help restaurants and app users in Missouri to deliver and order food online respectively. Customers can search various food items served at all restaurants, order online and get food home delivered across different cities in Missouri.
 ### Test Credentials
-Username : test@example.com
-password : Demo.123
+- Username : test@example.com
+- password : Demo.123
 ### References
 - [https://firebase.google.com/docs/android/setup](https://firebase.google.com/docs/android/setup)
 
