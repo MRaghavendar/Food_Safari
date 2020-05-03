@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.braintreepayments.cardform.view.CardForm;
 import com.example.food_safari.model.OrderOne;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -36,6 +39,7 @@ public class PaymentActivity extends AppCompatActivity {
     FirebaseAuth mFirebaseAuth;
     DatabaseReference databaseReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,8 @@ public class PaymentActivity extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         user_id = mFirebaseAuth.getCurrentUser().getUid();
+
+
 
 
         CharSequence mTitle = getTitle();

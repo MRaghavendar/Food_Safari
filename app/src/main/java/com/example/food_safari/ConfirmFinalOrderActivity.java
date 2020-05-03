@@ -14,12 +14,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
+
 public class ConfirmFinalOrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText nameEd, phoneEd, addressEd, cityEd;
     private Button confirmOrderbtn;
     private String totalAmount = "", address;
     private Spinner spinner;
     private String deliveryType;
+    AwesomeValidation mAwesomeValidation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,12 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity implements Adap
         addressEd = findViewById(R.id.order_AddressET);
         cityEd = findViewById(R.id.order_CityET);
         spinner = findViewById(R.id.spinner);
+        mAwesomeValidation = new AwesomeValidation(BASIC);
+
+        String telephone ="^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$";
+
+        mAwesomeValidation.addValidation(this, R.id.order_PhoneET, telephone, R.string.err_tel);
+
 
         spinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
